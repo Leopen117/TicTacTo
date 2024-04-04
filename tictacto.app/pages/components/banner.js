@@ -1,8 +1,8 @@
 const Banner = () => {
   return (
-    <div>
-      <h1>TicTacTo</h1>
-      <h3>by Leon Schwedler</h3>
+    <div className="banner">
+      <h1 className="h1">TicTacTo</h1>
+      <h4 className="h4">by Leon Schwedler</h4>
     </div>
   );
 };

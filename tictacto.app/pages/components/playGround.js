@@ -4,7 +4,7 @@ import { PlaysCache } from "./playsCache";
 
 const Playground = () => {
   return (
-    <div>
+    <div className="container">
       <CurrentPlayer></CurrentPlayer>
       <Court></Court>
       <PlaysCache></PlaysCache>
