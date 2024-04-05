@@ -28,6 +28,7 @@
   height: 100px;
   width: 600px;
   margin: auto;
+  margin-bottom: 5px;
   align-content: center;
   
 }
@@ -41,8 +42,47 @@
 }
 .startButton{
   height: 50px;
-  width: 400px;
-  margin: auto;
-
-  
+  width: 405px;
+  margin: auto;  
 }
+.courtContainer{
+  display: flex;
+  flex-flow: column;
+  height: 405px;
+  width: 405px;
+  margin: auto;
+  align-items: center;
+  background-color: white;
+}
+.court{
+  display: flex;
+  flex-flow: row;
+  height: 135px;
+  width: 405px;
+  
+  align-items: center;
+}
+.squareContainer{
+  display: flex;
+  height: 135px;
+  width: 135px;
+  align-items: center;
+}
+.square{
+  display: flex;
+  height: 135px;
+  width: 135px;
+  padding: 0px;
+  align-items: center;
+  background-color: white; 
+}
+.squareText{
+  display: flex;
+  height: 135px;
+  width: 135px;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  font-size: 90px;
+}
+  

@@ -1,22 +1,49 @@
 import { Square } from "./square.js";
 
-const Court = () => {
+const Court = ({ activePlayer, setActivePlayer }) => {
   return (
-    <div id="courtContainer">
-      <div>
-        <Square></Square>
-        <Square></Square>
-        <Square></Square>
+    <div className="courtContainer">
+      <div className="court">
+        <Square
+          activePlayer={activePlayer}
+          setActivePlayer={setActivePlayer}
+        ></Square>
+        <Square
+          activePlayer={activePlayer}
+          setActivePlayer={setActivePlayer}
+        ></Square>
+        <Square
+          activePlayer={activePlayer}
+          setActivePlayer={setActivePlayer}
+        ></Square>
       </div>
-      <div>
-        <Square></Square>
-        <Square></Square>
-        <Square></Square>
+      <div className="court">
+        <Square
+          activePlayer={activePlayer}
+          setActivePlayer={setActivePlayer}
+        ></Square>
+        <Square
+          activePlayer={activePlayer}
+          setActivePlayer={setActivePlayer}
+        ></Square>
+        <Square
+          activePlayer={activePlayer}
+          setActivePlayer={setActivePlayer}
+        ></Square>
       </div>
-      <div>
-        <Square></Square>
-        <Square></Square>
-        <Square></Square>
+      <div className="court">
+        <Square
+          activePlayer={activePlayer}
+          setActivePlayer={setActivePlayer}
+        ></Square>
+        <Square
+          activePlayer={activePlayer}
+          setActivePlayer={setActivePlayer}
+        ></Square>
+        <Square
+          activePlayer={activePlayer}
+          setActivePlayer={setActivePlayer}
+        ></Square>
       </div>
     </div>
   );

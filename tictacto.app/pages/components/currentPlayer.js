@@ -1,19 +1,15 @@
-import React, { useState } from "react";
-
-const CurrentPlayer = () => {
-  const [activePlayer, setActivePlayer] = useState("white");
+const CurrentPlayer = ({ activePlayer, setActivePlayer }) => {
   function startGame() {
-    setActivePlayer("aqua");
-    let playerOneInput = document.getElementById("playerOneInput");
-    let playerTwoInput = document.getElementById("playerTwoInput");
+    const playerOneInput = document.getElementById("playerOneInput");
+    const playerTwoInput = document.getElementById("playerTwoInput");
     playerOneInput.setAttribute("readOnly", "true");
     playerTwoInput.setAttribute("readOnly", "true");
+    setActivePlayer(1);
   }
-
   return (
     <div className="player">
       <div className="playerOne">
-        <label for="playerOneInput">Ready Player One</label>
+        <label htmlFor="playerOneInput">Ready Player One</label>
         <input
           id="playerOneInput"
           name="player"
@@ -21,12 +17,16 @@ const CurrentPlayer = () => {
           minLength="1"
           maxLength="10"
           size="10"
-          style={{ backgroundColor: activePlayer }}
+          style={
+            activePlayer === 1
+              ? { backgroundColor: "aqua" }
+              : { backgroundColor: "white" }
+          }
         ></input>
       </div>
 
       <div className="playerTwo">
-        <label for="playerTwoInput">Ready Player Two</label>
+        <label htmlFor="playerTwoInput">Ready Player Two</label>
         <input
           id="playerTwoInput"
           name="player"
@@ -34,6 +34,11 @@ const CurrentPlayer = () => {
           minLength="1"
           maxLength="10"
           size="10"
+          style={
+            activePlayer === 2
+              ? { backgroundColor: "aqua" }
+              : { backgroundColor: "white" }
+          }
         ></input>
       </div>
       <button className="startButton" onClick={startGame}>
