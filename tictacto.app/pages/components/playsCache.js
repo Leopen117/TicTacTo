@@ -1,13 +1,13 @@
 import { ReturnButton } from "./returnButton";
 
-const PlaysCache = ({ playCache }) => {
+const PlaysCache = ({ playCache, countTurn }) => {
   return (
     <div>
-      <label for="playsList">Past plays:</label>
+      <label>Past plays:</label>
       <ol id="playsList">
         {playCache.map((turn) => (
-          <li key={turn.id}>
-            <ReturnButton id={turn.id}></ReturnButton>
+          <li key={a}>
+            <ReturnButton></ReturnButton>
           </li>
         ))}
       </ol>

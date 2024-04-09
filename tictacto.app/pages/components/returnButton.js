@@ -1,5 +1,5 @@
-const ReturnButton = ({ id }) => {
-  return <button>Return to turn: {id}</button>;
+const ReturnButton = ({}) => {
+  return <button>Return to turn: {}</button>;
 };
 
 export { ReturnButton };

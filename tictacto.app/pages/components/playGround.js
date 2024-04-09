@@ -5,9 +5,11 @@ import { useState } from "react";
 
 const Playground = () => {
   const [activePlayer, setActivePlayer] = useState(0);
-  const initialPlayCache = [{ id: 0, value: [0, 0, 0, 0, 0, 0, 0, 0, 0] }];
-  let squareId = 0;
-  const [playCache, setPlayCache] = useState(initialPlayCache);
+  const initialCache = ["", "", "", "", "", "", "", "", ""];
+  const [courtState, setCourtState] = useState(initialCache);
+  const [playCache, setPlayCache] = useState([[...courtState]]);
+  // console.log("plaCache: ", playCache);
+  // console.log("courtState: ", courtState);
 
   return (
     <div className="container">
@@ -16,13 +18,14 @@ const Playground = () => {
         setActivePlayer={setActivePlayer}
       ></CurrentPlayer>
       <Court
-        squareId={squareId}
+        courtState={courtState}
+        setCourtState={setCourtState}
         activePlayer={activePlayer}
         setActivePlayer={setActivePlayer}
         playCache={playCache}
         setPlayCache={setPlayCache}
       ></Court>
-      <PlaysCache squareId={squareId} playCache={playCache}></PlaysCache>
+      {/* <PlaysCache countTurn={countTurn} playCache={playCache}></PlaysCache> */}
     </div>
   );
 };
