@@ -1,18 +1,40 @@
 import { useState } from "react";
 
-const Square = ({ activePlayer, setActivePlayer }) => {
+const Square = ({
+  activePlayer,
+  setActivePlayer,
+  id,
+  playCache,
+  setPlayCache,
+}) => {
   const [pickedSquare, setPickedSquare] = useState("");
+  let squareValue = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   function picked() {
-    console.log("activePlayer", activePlayer);
     if (pickedSquare === "") {
       switch (activePlayer) {
         case 1:
           setPickedSquare("X");
           setActivePlayer(2);
+          squareValue[id - 1] = 1;
+          setPlayCache([
+            ...playCache,
+            {
+              id: { id },
+              value: [{ squareValue }],
+            },
+          ]);
           break;
         case 2:
           setPickedSquare("O");
           setActivePlayer(1);
+          squareValue.splice({ id } - 1, 1, "2");
+          setPlayCache([
+            ...playCache,
+            {
+              id: { id },
+              value: [{ squareValue }],
+            },
+          ]);
           break;
         default:
           alert("At first start the game!");
