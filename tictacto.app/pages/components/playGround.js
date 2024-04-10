@@ -2,14 +2,33 @@ import { CurrentPlayer } from "./currentPlayer";
 import { Court } from "./court";
 import { PlaysCache } from "./playsCache";
 import { useState } from "react";
+import { ReturnButton } from "./returnButton";
 
 const Playground = () => {
   const [activePlayer, setActivePlayer] = useState(0);
-  const initialCache = ["", "", "", "", "", "", "", "", ""];
+  const initialCache = ["2", "", "", "", "", "", "", "", "", ""];
   const [courtState, setCourtState] = useState(initialCache);
-  const [playCache, setPlayCache] = useState([[...courtState]]);
-  // console.log("plaCache: ", playCache);
+  const [playHistory, setPlayHistory] = useState([[...courtState]]);
+
+  // console.log("playHistory: ", playHistory);
   // console.log("courtState: ", courtState);
+
+  //[[X,X,X][X,X,X][X,X,X]]
+  //foo[0][0]
+  function andTheWinnerIs(s) {
+    switch (courtState) {
+      case courtState[1] & courtState[2] & (courtState[3] === s):
+    }
+    ["", "s", "s", "s", "", "", "", "", "", ""][
+      ("", "", "", "", "s", "s", "s", "", "", "")
+    ][("", "", "", "", "", "", "", "s", "s", "s")][
+      ("", "s", "", "", "s", "", "", "s", "", "")
+    ][("", "", "s", "", "", "s", "", "", "s", "")][
+      ("", "", "", "s", "", "", "s", "", "", "s")
+    ][("", "s", "", "", "", "s", "", "", "", "s")][
+      ("", "", "", "s", "", "s", "", "s", "", "")
+    ];
+  }
 
   return (
     <div className="container">
@@ -22,10 +41,15 @@ const Playground = () => {
         setCourtState={setCourtState}
         activePlayer={activePlayer}
         setActivePlayer={setActivePlayer}
-        playCache={playCache}
-        setPlayCache={setPlayCache}
+        playHistory={playHistory}
+        setPlayHistory={setPlayHistory}
       ></Court>
-      {/* <PlaysCache countTurn={countTurn} playCache={playCache}></PlaysCache> */}
+      <PlaysCache
+        setActivePlayer={setActivePlayer}
+        setPlayHistory={setPlayHistory}
+        playHistory={playHistory}
+        setCourtState={setCourtState}
+      ></PlaysCache>
     </div>
   );
 };
