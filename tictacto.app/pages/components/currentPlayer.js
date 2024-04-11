@@ -1,14 +1,18 @@
-const CurrentPlayer = ({ activePlayer, setActivePlayer }) => {
+const CurrentPlayer = ({
+  activePlayer,
+  setActivePlayer,
+  returnToTurn,
+  resetTheSquares,
+}) => {
   function startGame() {
     const playerOneInput = document.getElementById("playerOneInput");
     const playerTwoInput = document.getElementById("playerTwoInput");
-    const squareArray = document.getElementsByClassName("square");
+
     playerOneInput.setAttribute("readOnly", "true");
     playerTwoInput.setAttribute("readOnly", "true");
     setActivePlayer(1);
-    for (var i = 0; i < squareArray.length; i++) {
-      squareArray[i].removeAttribute("disabled");
-    }
+    resetTheSquares();
+    returnToTurn(0);
   }
   return (
     <div className="player">

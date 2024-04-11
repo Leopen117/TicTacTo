@@ -2,8 +2,6 @@ import { CurrentPlayer } from "./currentPlayer";
 import { Court } from "./court";
 import { PlaysCache } from "./playsCache";
 import { useState } from "react";
-import { ReturnButton } from "./returnButton";
-import { Square } from "./square";
 
 const Playground = () => {
   const [activePlayer, setActivePlayer] = useState(0);
@@ -11,15 +9,25 @@ const Playground = () => {
   const [courtState, setCourtState] = useState(initialCache);
   const [playHistory, setPlayHistory] = useState([[...courtState]]);
 
-  // console.log("playHistory: ", playHistory);
-  // console.log("courtState: ", courtState);
-
-  //[[X,X,X][X,X,X][X,X,X]]
-  //foo[0][0]
+  function returnToTurn(id) {
+    setCourtState(playHistory[id]);
+    setPlayHistory(playHistory.slice(0, id + 1));
+    setActivePlayer(playHistory[id][0] == 1 ? 2 : 1);
+    resetTheSquares();
+  }
+  function resetTheSquares() {
+    const squareArray = document.getElementsByClassName("square");
+    for (var i = 0; i < squareArray.length; i++) {
+      squareArray[i].removeAttribute("disabled");
+      squareArray[i].style.backgroundColor = "white";
+    }
+  }
 
   return (
     <div className="container">
       <CurrentPlayer
+        resetTheSquares={resetTheSquares}
+        returnToTurn={returnToTurn}
         activePlayer={activePlayer}
         setActivePlayer={setActivePlayer}
       ></CurrentPlayer>
@@ -32,6 +40,7 @@ const Playground = () => {
         setPlayHistory={setPlayHistory}
       ></Court>
       <PlaysCache
+        returnToTurn={returnToTurn}
         setActivePlayer={setActivePlayer}
         setPlayHistory={setPlayHistory}
         playHistory={playHistory}

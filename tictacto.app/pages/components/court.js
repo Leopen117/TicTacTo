@@ -87,22 +87,13 @@ const Court = ({
   }
   function addColorToWinnerSquares(first, sec, third) {
     const squareArray = document.getElementsByClassName("square");
-    squareArray[first].style.backgroundColor = "aqua";
-    squareArray[sec].style.backgroundColor = "aqua";
-    squareArray[third].style.backgroundColor = "aqua";
+    squareArray[first].style.backgroundColor = "red";
+    squareArray[sec].style.backgroundColor = "red";
+    squareArray[third].style.backgroundColor = "red";
     for (var i = 0; i < squareArray.length; i++) {
       squareArray[i].setAttribute("disabled", "true");
     }
   }
-  // ["", "s", "s", "s", "", "", "", "", "", ""][
-  //   ("", "", "", "", "s", "s", "s", "", "", "")
-  // ][("", "", "", "", "", "", "", "s", "s", "s")][
-  //   ("", "s", "", "", "s", "", "", "s", "", "")
-  // ][("", "", "s", "", "", "s", "", "", "s", "")][
-  //   ("", "", "", "s", "", "", "s", "", "", "s")
-  // ][("", "s", "", "", "", "s", "", "", "", "s")][
-  //   ("", "", "", "s", "", "s", "", "s", "", "")
-  // ];
 
   return (
     <div className="courtContainer">
