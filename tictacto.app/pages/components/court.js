@@ -8,9 +8,9 @@ const Court = ({
   courtState,
   setCourtState,
 }) => {
+  let currentTurn = [...courtState];
   // set a "X" or "O" inside the picked Square
   function picked(currentSquare) {
-    let currentTurn = [...courtState];
     if (currentTurn[currentSquare] === "") {
       function pick(p, s) {
         setActivePlayer(p);
@@ -22,9 +22,11 @@ const Court = ({
       switch (activePlayer) {
         case 1:
           pick(2, "X");
+          andTheWinnerIs("X");
           break;
         case 2:
           pick(1, "O");
+          andTheWinnerIs("O");
           break;
         default:
           alert("At first start the game!");
@@ -34,6 +36,73 @@ const Court = ({
       alert("It is already picked!");
     }
   }
+
+  // Checking if there is a Winner
+  function andTheWinnerIs(s) {
+    if ((currentTurn[1] == s) & (currentTurn[2] == s) & (currentTurn[3] == s)) {
+      addColorToWinnerSquares(0, 1, 2);
+    } else if (
+      (currentTurn[4] == s) &
+      (currentTurn[5] == s) &
+      (currentTurn[6] == s)
+    ) {
+      addColorToWinnerSquares(3, 4, 5);
+    } else if (
+      (currentTurn[7] == s) &
+      (currentTurn[8] == s) &
+      (currentTurn[9] == s)
+    ) {
+      addColorToWinnerSquares(6, 7, 8);
+    } else if (
+      (currentTurn[1] == s) &
+      (currentTurn[4] == s) &
+      (currentTurn[7] == s)
+    ) {
+      addColorToWinnerSquares(0, 3, 6);
+    } else if (
+      (currentTurn[2] == s) &
+      (currentTurn[5] == s) &
+      (currentTurn[8] == s)
+    ) {
+      addColorToWinnerSquares(1, 4, 7);
+    } else if (
+      (currentTurn[3] == s) &
+      (currentTurn[6] == s) &
+      (currentTurn[9] == s)
+    ) {
+      addColorToWinnerSquares(2, 5, 8);
+    } else if (
+      (currentTurn[1] == s) &
+      (currentTurn[5] == s) &
+      (currentTurn[9] == s)
+    ) {
+      addColorToWinnerSquares(0, 4, 8);
+    } else if (
+      (currentTurn[3] == s) &
+      (currentTurn[5] == s) &
+      (currentTurn[7] == s)
+    ) {
+      addColorToWinnerSquares(2, 4, 6);
+    }
+  }
+  function addColorToWinnerSquares(first, sec, third) {
+    const squareArray = document.getElementsByClassName("square");
+    squareArray[first].style.backgroundColor = "aqua";
+    squareArray[sec].style.backgroundColor = "aqua";
+    squareArray[third].style.backgroundColor = "aqua";
+    for (var i = 0; i < squareArray.length; i++) {
+      squareArray[i].setAttribute("disabled", "true");
+    }
+  }
+  // ["", "s", "s", "s", "", "", "", "", "", ""][
+  //   ("", "", "", "", "s", "s", "s", "", "", "")
+  // ][("", "", "", "", "", "", "", "s", "s", "s")][
+  //   ("", "s", "", "", "s", "", "", "s", "", "")
+  // ][("", "", "s", "", "", "s", "", "", "s", "")][
+  //   ("", "", "", "s", "", "", "s", "", "", "s")
+  // ][("", "s", "", "", "", "s", "", "", "", "s")][
+  //   ("", "", "", "s", "", "s", "", "s", "", "")
+  // ];
 
   return (
     <div className="courtContainer">

@@ -3,6 +3,7 @@ import { Court } from "./court";
 import { PlaysCache } from "./playsCache";
 import { useState } from "react";
 import { ReturnButton } from "./returnButton";
+import { Square } from "./square";
 
 const Playground = () => {
   const [activePlayer, setActivePlayer] = useState(0);
@@ -15,20 +16,6 @@ const Playground = () => {
 
   //[[X,X,X][X,X,X][X,X,X]]
   //foo[0][0]
-  function andTheWinnerIs(s) {
-    switch (courtState) {
-      case courtState[1] & courtState[2] & (courtState[3] === s):
-    }
-    ["", "s", "s", "s", "", "", "", "", "", ""][
-      ("", "", "", "", "s", "s", "s", "", "", "")
-    ][("", "", "", "", "", "", "", "s", "s", "s")][
-      ("", "s", "", "", "s", "", "", "s", "", "")
-    ][("", "", "s", "", "", "s", "", "", "s", "")][
-      ("", "", "", "s", "", "", "s", "", "", "s")
-    ][("", "s", "", "", "", "s", "", "", "", "s")][
-      ("", "", "", "s", "", "s", "", "s", "", "")
-    ];
-  }
 
   return (
     <div className="container">

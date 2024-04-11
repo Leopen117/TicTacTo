@@ -2,9 +2,13 @@ const CurrentPlayer = ({ activePlayer, setActivePlayer }) => {
   function startGame() {
     const playerOneInput = document.getElementById("playerOneInput");
     const playerTwoInput = document.getElementById("playerTwoInput");
+    const squareArray = document.getElementsByClassName("square");
     playerOneInput.setAttribute("readOnly", "true");
     playerTwoInput.setAttribute("readOnly", "true");
     setActivePlayer(1);
+    for (var i = 0; i < squareArray.length; i++) {
+      squareArray[i].removeAttribute("disabled");
+    }
   }
   return (
     <div className="player">
@@ -42,7 +46,7 @@ const CurrentPlayer = ({ activePlayer, setActivePlayer }) => {
         ></input>
       </div>
       <button className="startButton" onClick={startGame}>
-        Start the Game!
+        Start a new Game!
       </button>
     </div>
   );
