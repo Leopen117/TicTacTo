@@ -41,10 +41,7 @@ const Playground = () => {
       ></Court>
       <PlaysCache
         returnToTurn={returnToTurn}
-        setActivePlayer={setActivePlayer}
-        setPlayHistory={setPlayHistory}
         playHistory={playHistory}
-        setCourtState={setCourtState}
       ></PlaysCache>
     </div>
   );
